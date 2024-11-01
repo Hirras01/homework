@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 import ReactDOM from "react-dom/client";
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
     <div>
       <h1>Fetched Data:</h1>
       <ul>
-        {data.map((item) => (
+        {data.map((item: { id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }) => (
           <li key={item.id}>{item.title}</li>
         ))}
       </ul>
@@ -32,5 +33,5 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<App />);
